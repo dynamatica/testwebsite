@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Swinging Sign</title>
+
+	<style>
+		body {
+			background: linear-gradient(-45deg, #6ac0ff, #3a86ff, #8d55ff, #4c31f7, #4c31f7, #8d55ff, #3a86ff, #6ac0ff);
+			background-size: 400% 400%;
+			animation: gradient 20s ease infinite;
+			margin: 0;
+			padding: 0;
+		}
+		#sign {
+			position: absolute;
+			top: -38px;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 840px;
+			height: 610px;
+			background-image: url('sign.png');
+background-repeat: no-repeat;
+			background-size: contain;
+			
+					animation: swing 6s linear infinite;
+		}
+		@keyframes swing {
+			0% {
+				transform: rotate(0deg);
+			}
+			20% {
+				transform: rotate(15deg);
+			}
+			40% {
+				transform: rotate(-10deg);
+			}
+			60% {
+				transform: rotate(5deg);
+			}
+			80% {
+				transform: rotate(-5deg);
+			}
+			100% {
+				transform: rotate(0deg);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<img id="background-image" src="background.png" alt="Background Image">
+		<div id="sign"></div>
+<script>
+var body = document.querySelector("body");
+var colors = ["#ADFFFC", "#84C1FF", "#ADFFFC", "#84C1FF"];
+var index = 0;
+
+body.style.background = "linear-gradient(to right, " + colors.join(", ") + ")";
+
+setInterval(function() {
+  index = (index + 1) % colors.length;
+  var currentColors = colors.slice(index).concat(colors.slice(0, index));
+  body.style.background = "linear-gradient(to right, " + currentColors.join(", ") + ")";
+}, 1000);
+</script>
+	</div>
+</body>
+</html>
